@@ -1,0 +1,19 @@
+{
+  "name": "lambda-svg-to-png-fabric",
+  "version": "1.0.0",
+  "description": "This lambda function create png from svg. using canvas and d3.js.",
+  "main": "handler.js",
+  "dependencies": {
+    "aws-sdk": "^2.5.2",
+    "d3": "^4.2.2",
+    "fabric": "^1.6.3",
+    "jsdom": "^9.4.2",
+    "md5": "^2.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "takayuki ito",
+  "license": "ISC"
+}

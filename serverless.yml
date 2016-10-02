@@ -1,0 +1,38 @@
+service: lambda-svg-to-png-fabric
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: dev
+  region: ap-northeast-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObjectAcl"
+        - "s3:PutObject"
+      Resource: "arn:aws:s3:::lambda-svg-to-png-fabric/*"
+
+# you can add packaging information here
+package:
+ include:
+   - node_modules
+   - lib
+   - env.js
+   - package.json
+
+functions:
+  lambdaSvgToPngFabric:
+    handler: handler.convert
+    memorySize: 256
+    timeout: 60
+    events:
+      - http:
+          path: convert
+          method: post
+          cors: true
+
+resources:
+ Resources:
+   NewResource:
+     Type: AWS::S3::Bucket
+     Properties:
+       BucketName: lambda-svg-to-png-fabric
